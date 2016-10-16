@@ -6,3 +6,4 @@ class Trip(ndb.Model):
     start_date = ndb.DateProperty()
     end_date = ndb.DateProperty()
     description = ndb.TextProperty()
+    last_touch_date_time = ndb.DateTimeProperty(auto_now=True)
