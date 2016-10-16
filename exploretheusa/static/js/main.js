@@ -1,3 +1,5 @@
 $(document).ready(function() {
-    $('#map').usmap({});
+    $('#map').usmap({
+    	stateStyles: {fill: 'white'}
+    });
   });
