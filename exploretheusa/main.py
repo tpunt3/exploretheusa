@@ -17,10 +17,12 @@
 import os
 
 from google.appengine.api import users
+from google.appengine.ext.analytics.standaloneapp import MainPage
 import jinja2
 import webapp2
+
 from handlers.base_handlers import BasePage
-from google.appengine.ext.analytics.standaloneapp import MainPage
+from handlers.insert_handlers import InsertTripAction
 
 
 jinja_env = jinja2.Environment(
@@ -56,5 +58,6 @@ config['webapp2_extras.sessions'] = {
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
-    ('/home', MainPage)
+    ('/home', MainPage),
+    ('/inserttrip', InsertTripAction)
 ], config=config, debug=True)
