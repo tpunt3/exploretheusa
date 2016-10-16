@@ -19,22 +19,42 @@ import os
 from google.appengine.api import users
 import jinja2
 import webapp2
+from handlers.base_handlers import BasePage
+from google.appengine.ext.analytics.standaloneapp import MainPage
 
 
 jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     autoescape=True)
 
-class LoginPage(webapp2.RequestHandler):
+class LoginPage(BasePage):
     def get(self):
+        values = {}
         user = users.get_current_user()
+        if user:
+            self.redirect("/home")
+            return
         template = jinja_env.get_template("templates/login.html")
-        self.response.out.write(template.render())
+        values = {"login_url":users.create_login_url("/home")}
+        self.response.out.write(template.render(values))
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
+class MainPage(BasePage):
+    def get_page_title(self):
+        return "Explore The USA"        
+        
+    def get_template(self):
+        return "templates/mainpage.html"
+    
+    def update_values(self):
+        pass
+    
+config = {}
+config['webapp2_extras.sessions'] = {
+    # This key is used to encrypt your sessions
+    'secret_key': 'mysupersecretkey',
+}
 
 app = webapp2.WSGIApplication([
-    ('/', LoginPage)
-], debug=True)
+    ('/', LoginPage),
+    ('/home', MainPage)
+], config=config, debug=True)
