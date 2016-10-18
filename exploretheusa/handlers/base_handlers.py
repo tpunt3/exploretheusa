@@ -64,7 +64,7 @@ class BaseAction(webapp2.RequestHandler):
   def get(self):
     self.post()  # Action handlers should not use get requests.
 
-  def handle_post(self, user, account_info):
+  def handle_post(self, email):
     # Subclasses must override this method to handle the request.
     raise Exception("Subclass must implement handle_post!")
 
