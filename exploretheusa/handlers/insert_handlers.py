@@ -11,6 +11,7 @@ class InsertTripAction(BaseAction):
         trip.city = self.request.get("city")
         trip.start_date = self.request.get("arrival-date")
         trip.end_date = self.request.get("departure-date")
+        trip.description = self.request.get("description")
         # last touch modified time update? or nah?
         
         trip.put()
