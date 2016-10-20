@@ -21,6 +21,7 @@ from google.appengine.ext.analytics.standaloneapp import MainPage
 import jinja2
 import webapp2
 
+from handlers import blob_handler
 from handlers.base_handlers import BasePage
 from handlers.insert_handlers import InsertTripAction
 
@@ -59,5 +60,8 @@ config['webapp2_extras.sessions'] = {
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/home', MainPage),
-    ('/inserttrip', InsertTripAction)
+    ('/insert-trip', InsertTripAction),
+
+    # for images
+    ('/img/([^/]+)?', blob_handler.BlobServer)
 ], config=config, debug=True)

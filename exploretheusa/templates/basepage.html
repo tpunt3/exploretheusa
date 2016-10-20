@@ -56,7 +56,7 @@
 		            </button>
 		            <h4 class="modal-title">Add a New Trip!</h4>
 		          </div>
-		          <form class="form-horizontal" action="/inserttrip" method="POST">
+		          <form class="form-horizontal" action="{{ form_action }}" method="POST" enctype="multipart/form-data">
 		            <input name="entity_key" type="text" class="hidden">
 		            <div class="modal-body">
 
@@ -96,7 +96,23 @@
                         placeholder="Description..." name="description"></textarea>
                     </div>
                   </div>
+
+                  <div id="image-attachment">
+				            {% set has_img = text_message_event and
+				            text_message_event.media_blob_key %}
+                    <input id="img-input" type="file"
+				              name="image_attachment" class="hidden">
+				            <button id="attach-img-btn" type="button"
+				              class="btn btn-default">
+				              Add image</button>
+				            {% if has_img %}
+				            <button id="remove-img-btn" type="button"
+				              class="btn btn-default">
+				              Remove image</button>
+				            {% endif %}
+				          </div>
 		            </div>
+
 		            <div class="modal-footer">
 		              <button type="button" class="btn btn-default"
 		                data-dismiss="modal">Cancel</button>

@@ -2,7 +2,7 @@
 import json
 import logging
 
-from google.appengine.api import users
+from google.appengine.api import users, blobstore
 import webapp2
 from webapp2_extras import sessions
 
@@ -23,6 +23,7 @@ class BasePage(webapp2.RequestHandler):
         email = user.email().lower()
     values["user_email"] = email,
     values["logout_url"] = users.create_logout_url("/")
+    values["form_action"] = blobstore.create_upload_url('/insert-trip')
     #self.update_values(email, values)  
         
     template = main.jinja_env.get_template(self.get_template())

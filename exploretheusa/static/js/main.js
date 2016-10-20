@@ -2,8 +2,19 @@ var rh = rh || {};
 rh.eu = rh.eu || {};
 
 rh.eu.enableButtons = function() {
-	
-	
+  $("#attach-img-btn").click(function() {
+	rh.eu.triggerImageFileInput();
+  });
+}
+
+rh.eu.mainPageInit = function() {
+  $("#img-input").change(function(event) {
+    $("#attach-img-btn").text("Image saved");
+  });
+}
+
+rh.eu.triggerImageFileInput = function() {
+  document.getElementById("img-input").click();
 }
 
 rh.eu.mapUpdate = function(){
@@ -12,6 +23,8 @@ rh.eu.mapUpdate = function(){
 
 
 $(document).ready(function() {
+	rh.eu.enableButtons();
+
 	$('#map').usmap({
 	  // The click action
 	  click: function(event, data) {
