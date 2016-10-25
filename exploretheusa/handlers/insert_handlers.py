@@ -1,8 +1,6 @@
 import logging
-import user
 
 from google.appengine.api import users
-from google.appengine.api.blobstore.blobstore import BlobKey
 from google.appengine.ext.webapp import blobstore_handlers
 
 from models import Trip
