@@ -19,12 +19,27 @@ rh.eu.enableButtons = function() {
     });
   });
   
-  
-  
-  $(".trip-card .edit-trip-btn").click(function(){
-	  console.log("woo");
-  });
-  
+  $(".edit-trip-btn").click(function() {
+	     var entityKey = $(this).find(".entity-key").html();
+	     var state = $(this).find(".state").html();
+	     var city = $(this).find(".city").html();
+	     var description = $(this).find(".description").html();
+	     var startDate = $(this).find(".start-date").html();
+	     var endDate = $(this).find(".end-date").html();
+
+	     $("#insert-trip-modal input[name=trip_entity_key]").val(entityKey);
+
+	     $("#insert-trip-modal .entity-key-for-delete").html(entityKey);
+	     $("#insert-trip-modal .modal-title").html("Update Trip!");
+	     $("#insert-trip-modal #state-input").val(state);
+	     $("#insert-trip-modal #city-input").val(city);
+	     $("#insert-trip-modal #arrival-date").val(startDate);
+	     $("#insert-trip-modal #departure-date").val(endDate);
+	     $("#insert-trip-modal #description").html(description);
+	     $("#insert-trip-modal .delete-trip-btn").show();
+	     $("#insert-trip-modal button[type=submit]").html("Update");
+	     $("#insert-trip-modal").modal("show");
+	  });  
 }
 
 rh.eu.mainPageInit = function() {
