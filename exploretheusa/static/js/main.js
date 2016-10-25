@@ -9,7 +9,7 @@ rh.eu.enableButtons = function() {
 
 rh.eu.mainPageInit = function() {
   $("#img-input").change(function(event) {
-    $("#attach-img-btn").text("Image saved");
+    $("#attach-img-btn").text("Update image");
   });
 }
 
@@ -24,6 +24,7 @@ rh.eu.mapUpdate = function(){
 
 $(document).ready(function() {
 	rh.eu.enableButtons();
+	rh.eu.mainPageInit();
 
 	$('#map').usmap({
 	  // The click action
