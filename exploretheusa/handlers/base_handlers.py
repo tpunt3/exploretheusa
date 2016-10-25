@@ -24,7 +24,7 @@ class BasePage(webapp2.RequestHandler):
     values["user_email"] = email,
     values["logout_url"] = users.create_logout_url("/")
     values["form_action"] = blobstore.create_upload_url('/insert-trip')
-    #self.update_values(email, values)  
+    self.update_values(email, values)  
         
     template = main.jinja_env.get_template(self.get_template())
     self.response.out.write(template.render(values))

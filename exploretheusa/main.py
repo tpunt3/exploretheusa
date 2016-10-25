@@ -49,7 +49,7 @@ class MainPage(BasePage):
     def get_template(self):
         return "templates/mainpage.html"
     
-    def update_values(self):
+    def update_values(self, email, values):
         pass
 
 class ViewTripPage(BasePage):

@@ -1,25 +1,22 @@
 <div class="trip-card">
-  <div class="">
-    <div class="">
-      <h2 class="">{{ trip.city }}</h2>
-      <div class=""></div>
-      <div style="display: none;" class="edit-trip-btn">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        <div class="hidden entity-key">{{ trip.key.urlsafe() }}</div>
-        <div class="hidden state">{{ trip.state }}</div>
-        <div class="hidden city">{{ trip.city }}</div>
-        <div class="hidden description">{{ trip.description }}</div>
-      </div>
-    </div>
-  
-    <div style="display: none;" class="">
-      <div class="">
-        <div class="">State:</div>
-        <div class="">{{ trip.state }}</div>
-        <div class="">City:</div>
-        <div class="">{{ trip.city }}</div>
-      </div>
-      
-    </div>
-  </div>
+   <div class="col-xs-4 col-md-3">
+     <h2 class="">{{ trip.city }}</h2>
+     <div class=""></div>
+     <div style="display: none;" class="edit-trip-btn">
+       <i class="fa fa-pencil" aria-hidden="true"></i>
+       <div class="hidden entity-key">{{ trip.key.urlsafe() }}</div>
+       <div class="hidden state">{{ trip.state }}</div>
+       <div class="hidden city">{{ trip.city }}</div>
+       <div class="hidden description">{{ trip.description }}</div>
+     </div>
+   </div>
+ 
+   <div style="display: none;" class="">
+     <div class="">
+       <div class="">State:</div>
+       <div class="">{{ trip.state }}</div>
+       <div class="">City:</div>
+       <div class="">{{ trip.city }}</div>
+     </div>
+   </div>
 </div>
