@@ -1,0 +1,9 @@
+{% extends "templates/basepage.html" %}
+
+{% block content %}
+	<div>
+		{% for trip in trip_query %}
+	    {% include "templates/trip-card.html" %}
+	  {% endfor %}
+  </div>
+{% endblock %}

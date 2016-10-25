@@ -24,6 +24,7 @@ import webapp2
 from handlers import blob_handler
 from handlers.base_handlers import BasePage
 from handlers.insert_handlers import InsertTripAction
+import utils
 
 
 jinja_env = jinja2.Environment(
@@ -50,7 +51,14 @@ class MainPage(BasePage):
     
     def update_values(self):
         pass
+
+class ViewTripPage(BasePage):
+    def get_template(self):
+        return "templates/viewTrips.html"
     
+    def update_values(self, email, values):
+        values["trip_query"] = utils.get_query_for_all_trips_for_email(email);    
+        
 config = {}
 config['webapp2_extras.sessions'] = {
     # This key is used to encrypt your sessions
@@ -61,6 +69,7 @@ app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/home', MainPage),
     ('/insert-trip', InsertTripAction),
+    ('/view-trips', ViewTripPage),
 
     # for images
     ('/img/([^/]+)?', blob_handler.BlobServer)
