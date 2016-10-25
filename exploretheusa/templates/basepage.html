@@ -40,6 +40,11 @@
 		      <ul class="nav navbar-nav">
 		        <li><a href="/view-trips" id="add-trip">View Trips</a></li>
 		      </ul>
+		      {% if user_email is defined %}
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href=" {{ logout_url }} " id="logout-btn">Log Out</a></li>
+            </ul>
+          {% endif %}
 		    </div>
   		</div>
 		</nav>
@@ -63,7 +68,7 @@
 		            <h4 class="modal-title">Add a New Trip!</h4>
 		          </div>
 		          <form class="form-horizontal" action="{{ form_action }}" method="POST" enctype="multipart/form-data">
-		            <input name="entity_key" type="text" class="hidden">
+		            <input name="trip_entity_key" type="text" class="hidden">
 		            <div class="modal-body">
 
 		              <div class="form-group">
@@ -112,6 +117,10 @@
 				          </div>
 		            </div>
 
+                <button type="button" style="display: none;" class="btn btn-default delete-trip-btn">
+                  <span>Delete Trip?</span>
+                  <div style="display: none;" class="entity-key-for-delete"></div>
+                </button>
 		            <div class="modal-footer">
 		              <button type="button" class="btn btn-default"
 		                data-dismiss="modal">Cancel</button>

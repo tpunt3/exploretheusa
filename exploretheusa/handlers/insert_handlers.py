@@ -1,6 +1,7 @@
 import logging
 
 from google.appengine.api import users
+from google.appengine.ext import ndb
 from google.appengine.ext.webapp import blobstore_handlers
 
 from models import Trip
@@ -19,7 +20,11 @@ class InsertTripAction(blobstore_handlers.BlobstoreUploadHandler):
         self.handle_post(email)
 
     def handle_post(self, email):
-        trip = Trip(parent=utils.get_parent_key_for_email(email))
+        if self.request.get("trip_entity_key"):
+            trip_key = ndb.Key(urlsafe=self.request.get("trip_entity_key"))
+            trip = trip_key.get()
+        else:
+            trip = Trip(parent=utils.get_parent_key_for_email(email))
         
         trip.state = self.request.get("state")
         trip.city = self.request.get("city")
