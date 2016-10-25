@@ -35,11 +35,27 @@ rh.eu.enableButtons = function() {
 	     $("#insert-trip-modal #city-input").val(city);
 	     $("#insert-trip-modal #arrival-date").val(startDate);
 	     $("#insert-trip-modal #departure-date").val(endDate);
-	     $("#insert-trip-modal #description").html(description);
+	     $("#insert-trip-modal #description").val(description);
 	     $("#insert-trip-modal .delete-trip-btn").show();
 	     $("#insert-trip-modal button[type=submit]").html("Update");
 	     $("#insert-trip-modal").modal("show");
-	  });  
+	  });
+  
+  $("#add-trip").click(function(){
+	 rh.eu.resetAddTripModal(); 
+  });
+  
+}
+
+rh.eu.resetAddTripModal = function() {
+	$("#insert-trip-modal .modal-title").html("Add trip!");
+	$("#insert-trip-modal #state-input").val("");
+    $("#insert-trip-modal #city-input").val("");
+    $("#insert-trip-modal #arrival-date").val("");
+    $("#insert-trip-modal #departure-date").val("");
+    $("#insert-trip-modal #description").val("");
+    $("#insert-trip-modal .delete-trip-btn").hide();
+    $("#insert-trip-modal button[type=submit]").html("Add");
 }
 
 rh.eu.mainPageInit = function() {

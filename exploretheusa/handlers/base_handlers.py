@@ -21,6 +21,7 @@ class BasePage(webapp2.RequestHandler):
       return
     if user:
         email = user.email().lower()
+        
     values["user_email"] = email,
     values["logout_url"] = users.create_logout_url("/")
     values["form_action"] = blobstore.create_upload_url('/insert-trip')
