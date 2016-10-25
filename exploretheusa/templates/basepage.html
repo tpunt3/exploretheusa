@@ -104,18 +104,11 @@
                   </div>
 
                   <div id="image-attachment">
-				            {% set has_img = text_message_event and
-				            text_message_event.media_blob_key %}
                     <input id="img-input" type="file"
 				              name="image_attachment" class="hidden">
 				            <button id="attach-img-btn" type="button"
 				              class="btn btn-default">
 				              Add image</button>
-				            {% if has_img %}
-				            <button id="remove-img-btn" type="button"
-				              class="btn btn-default">
-				              Remove image</button>
-				            {% endif %}
 				          </div>
 		            </div>
 
