@@ -5,9 +5,40 @@
 	  {% if trip_query.count() == 0 %}
 	    <h2>You currently don't have any trips! Add one with the map or Add Trip button.</h2>
 	  {% else %}
+	    <h1>Displaying Trips Filtered by: {{ trip_filter.title() }}</h1>
+
+      <div class="row">
+      <form action="/view-trips" method="GET">
+        <select class="form-control" id="filter-input" name="filter">
+          {% if trip_filter.title() == 'City' %}
+            <option selected>City</option>
+          {% else %}
+            <option>City</option>
+          {% endif %}
+
+          {% if trip_filter.title() == 'State' %}
+            <option selected>State</option>
+          {% else %}
+            <option>State</option>
+          {% endif %}
+
+          {% if trip_filter.title() == 'Created Date' %}
+            <option selected>Created Date</option>
+          {% else %}
+            <option>Created Date</option>
+          {% endif %}
+          <!-- <option>Created At</option> -->
+        </select>
+
+        <button type="submit" class="btn btn-primary">Update Filter</button>
+      </form>
+      </div>
+
+      <div class="container">
       {% for trip in trip_query %}
         {% include "templates/trip-card.html" %}
       {% endfor %}
+      </div>
     {% endif %}
   </div>
 {% endblock %}

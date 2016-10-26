@@ -24,6 +24,7 @@ import webapp2
 from handlers import blob_handler
 from handlers.base_handlers import BasePage
 from handlers.insert_handlers import InsertTripAction
+from models import Trip
 import utils
 
 
@@ -56,7 +57,13 @@ class ViewTripPage(BasePage):
         return "templates/viewTrips.html"
     
     def update_values(self, email, values):
-        values["trip_query"] = utils.get_query_for_all_trips_for_email(email);    
+        if self.request.get("filter"):
+            trip_filter = utils.get_filter_type_from_string(self.request.get("filter"))
+        else:
+            trip_filter = utils.get_filter_type_from_string('state')
+
+        values["trip_filter"] = trip_filter['key']
+        values["trip_query"] = utils.get_filtered_query_for_all_trips_for_email(email, trip_filter['value']);    
         
 config = {}
 config['webapp2_extras.sessions'] = {
