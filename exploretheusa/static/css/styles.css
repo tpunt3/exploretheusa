@@ -28,6 +28,10 @@
 	text-align: center;
 }
 
+.trip-card:hover {
+	cursor: pointer;
+}
+
 .title {
 	text-align: center;
 	margin-top: 10px
@@ -35,4 +39,9 @@
 
 #welcome {
 	text-align: center;
+}
+
+.trip-image {
+	width: 150px;
+	height: auto;
 }

@@ -1,6 +1,9 @@
 <div class="trip-card col-xs-4 col-md-3">
 	<div class="header">
 	  <h2 class="title">{{ trip.city }}</h2>
+	  {% if trip.media_blob_key %}
+	    <div><img src="/img/{{ trip.media_blob_key }}" class="trip-image"/></div>
+	  {% endif %}
   </div>
 	
 	<div style="display: none;" class="more-info edit-trip-btn">

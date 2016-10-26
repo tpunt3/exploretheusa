@@ -2,8 +2,12 @@
 
 {% block content %}
 	<div class="container">
-		{% for trip in trip_query %}
-	    {% include "templates/trip-card.html" %}
-	  {% endfor %}
+	  {% if trip_query.count() == 0 %}
+	    <h2>You currently don't have any trips! Add one with the map or Add Trip button.</h2>
+	  {% else %}
+      {% for trip in trip_query %}
+        {% include "templates/trip-card.html" %}
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}

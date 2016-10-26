@@ -33,13 +33,12 @@ jinja_env = jinja2.Environment(
 
 class LoginPage(BasePage):
     def get(self):
-        values = {}
         user = users.get_current_user()
         if user:
             self.redirect("/home")
             return
         template = jinja_env.get_template("templates/login.html")
-        values = {"login_url":users.create_login_url("/home")}
+        values = {"login_url" :users.create_login_url("/home")}
         self.response.out.write(template.render(values))
 
 class MainPage(BasePage):
