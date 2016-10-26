@@ -6,6 +6,7 @@ from google.appengine.ext.webapp import blobstore_handlers
 
 from models import Trip
 import utils
+from handlers.base_handlers import BaseAction
 
 
 class InsertTripAction(blobstore_handlers.BlobstoreUploadHandler):
@@ -43,3 +44,10 @@ class InsertTripAction(blobstore_handlers.BlobstoreUploadHandler):
 
         trip.put()
         self.redirect(self.request.referer)
+
+class DeleteTripAction(BaseAction):
+    def handle_post(self, email):
+        trip_key = ndb.Key(urlsafe=self.request.get('entity_key_for_delete'))
+        trip_key.delete();
+
+        self.redirect('/view-trips')

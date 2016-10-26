@@ -23,7 +23,7 @@ import webapp2
 
 from handlers import blob_handler
 from handlers.base_handlers import BasePage
-from handlers.trip_handlers import InsertTripAction
+from handlers.trip_handlers import InsertTripAction, DeleteTripAction
 from models import Trip
 import utils
 
@@ -75,7 +75,7 @@ app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/home', MainPage),
     ('/insert-trip', InsertTripAction),
-#     ('/delete-trip', DeleteTripAction),
+    ('/delete-trip', DeleteTripAction),
     ('/view-trips', ViewTripPage),
 
     # for images

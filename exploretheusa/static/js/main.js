@@ -28,8 +28,8 @@ rh.eu.enableButtons = function() {
 	     var endDate = $(this).find(".end-date").html();
 
 	     $("#insert-trip-modal input[name=trip_entity_key]").val(entityKey);
+	     $("#delete-trip-modal input[name=entity_key_for_delete]").val(entityKey);
 
-	     $("#insert-trip-modal .entity-key-for-delete").html(entityKey);
 	     $("#insert-trip-modal .modal-title").html("Update Trip!");
 	     $("#insert-trip-modal #state-input").val(state);
 	     $("#insert-trip-modal #city-input").val(city);
@@ -43,6 +43,10 @@ rh.eu.enableButtons = function() {
   
   $("#add-trip").click(function(){
 	 rh.eu.resetAddTripModal(); 
+  });
+
+  $(".cancel-delete-trip-button").click(function() {
+	 $("#delete-trip-modal").modal('toggle');
   });
   
 }
