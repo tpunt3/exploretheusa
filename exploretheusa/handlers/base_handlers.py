@@ -1,12 +1,10 @@
 
-import json
-import logging
-
 from google.appengine.api import users, blobstore
 import webapp2
 from webapp2_extras import sessions
 
 import main
+from models import STATE_VALUES
 
 
 # Potentially helpful (or not) superclass for *logged in* pages and actions (assumes app.yaml gaurds for login)
@@ -25,6 +23,8 @@ class BasePage(webapp2.RequestHandler):
     values["user_email"] = email,
     values["logout_url"] = users.create_logout_url("/")
     values["form_action"] = blobstore.create_upload_url('/insert-trip')
+    values["states"] = STATE_VALUES
+
     self.update_values(email, values)  
         
     template = main.jinja_env.get_template(self.get_template())
