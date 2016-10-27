@@ -44,4 +44,19 @@
 .trip-image {
 	width: 150px;
 	height: auto;
+	margin-bottom: 10px;
+}
+
+#image-attachment {
+	text-align: center;
+}
+
+#filter-input {
+	width: 20%;
+	margin-left: 40%;
+	margin-bottom: 10px;
+}
+
+.container {
+	text-align: center;
 }

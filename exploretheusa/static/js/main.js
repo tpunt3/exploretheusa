@@ -26,6 +26,12 @@ rh.eu.enableButtons = function() {
 	     var description = $(this).find(".description").html();
 	     var startDate = $(this).find(".start-date").html();
 	     var endDate = $(this).find(".end-date").html();
+	     
+	     if($(this).prev().children('div').children(".trip-image").length){
+	    	 $("#insert-trip-modal #attach-img-btn").text("Update image")
+	     }else{
+	    	 $("#insert-trip-modal #attach-img-btn").text("Add image")
+	     }
 
 	     $("#insert-trip-modal input[name=trip_entity_key]").val(entityKey);
 	     $("#delete-trip-modal input[name=entity_key_for_delete]").val(entityKey);
