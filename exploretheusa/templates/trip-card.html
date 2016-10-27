@@ -1,14 +1,24 @@
 <div class="trip-card col-xs-4 col-md-3">
 	<div class="header">
-	  <h2 class="title">{{ trip.city }}</h2>
+	  <h2 class="title">
+	  	{% if trip_filter.title() == 'City' %}
+	  		{{ trip.city }}
+	  	{% elif trip_filter.title() == 'State' %}
+	  		{{ trip.state }}
+	  	{% elif trip_filter.title() == 'Created Date' %}
+	  		{{ trip.state }}
+	  	{% endif %}
+	  </h2>
 	  {% if trip.media_blob_key %}
 	    <div><img src="/img/{{ trip.media_blob_key }}" class="trip-image"/></div>
 	  {% endif %}
   </div>
-	
 	<div style="display: none;" class="more-info edit-trip-btn">
+		<hr class="breaker">
     <div>State: {{ trip.state }}</div>
     <div>City: {{ trip.city }}</div>
+    <div>Start Date: {{ trip.start_date }}</div>
+    <div>End Date: {{ trip.end_date }}</div>
     <div>Description: {{ trip.description }}</div>
     <div class="hidden entity-key">{{ trip.key.urlsafe() }}</div>
     <div class="hidden state">{{ trip.state }}</div>

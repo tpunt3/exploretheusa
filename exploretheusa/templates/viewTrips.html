@@ -5,7 +5,7 @@
 	  {% if trip_query.count() == 0 %}
 	    <h2>You currently don't have any trips! Add one with the map or Add Trip button.</h2>
 	  {% else %}
-	    <h1>Displaying Trips Filtered by: {{ trip_filter.title() }}</h1>
+	    <h1>Displaying trips filtered by: {{ trip_filter.title() }}</h1>
 
       <div class="row">
       <form action="/view-trips" method="GET">

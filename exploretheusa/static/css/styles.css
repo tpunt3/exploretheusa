@@ -60,3 +60,11 @@
 .container {
 	text-align: center;
 }
+
+.edit-trip-btn {
+	font-size: 1.4em;
+}
+
+.breaker {
+	border-color: black;
+}
