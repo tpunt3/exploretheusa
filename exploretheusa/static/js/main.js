@@ -78,8 +78,26 @@ rh.eu.triggerImageFileInput = function() {
   document.getElementById("img-input").click();
 }
 
+rh.eu.filledStates = [];
+
 rh.eu.mapUpdate = function(){
-//	think about removing and re-creating
+	$('#map').remove();
+	$newMap = $('<div></div>').attr("id", "map");
+	$('.body').append($newMap);
+	
+	var styles = {};
+	
+	rh.eu.filledStates.forEach(function(state){
+		styles[state] = {fill:'blue'};
+	});
+	
+	$('#map').usmap({
+		click: function(event, data) {
+		    rh.eu.filledStates.push(data.name);
+		    rh.eu.mapUpdate();
+		  },	
+		stateSpecificStyles: styles
+	});
 }
 
 
@@ -90,13 +108,8 @@ $(document).ready(function() {
 	$('#map').usmap({
 	  // The click action
 	  click: function(event, data) {
-	    console.log(data.name);
+	    rh.eu.filledStates.push(data.name)
 	    rh.eu.mapUpdate();
-	  },
-	
-	stateSpecificStyles: {
-	    'MD': {fill: 'yellow'},
-	    'VA': {fill: 'teal'}
 	  }
 	});
 });
