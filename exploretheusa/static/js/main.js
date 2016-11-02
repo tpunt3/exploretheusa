@@ -93,6 +93,7 @@ rh.eu.mapUpdate = function(){
 	
 	$('#map').usmap({
 		click: function(event, data) {
+			rh.eu.stateOpenModal(data.name);
 		    rh.eu.filledStates.push(data.name);
 		    rh.eu.mapUpdate();
 		  },	
@@ -100,6 +101,11 @@ rh.eu.mapUpdate = function(){
 	});
 }
 
+rh.eu.stateOpenModal = function(state){
+	rh.eu.resetAddTripModal();
+    $('#insert-trip-modal #state-input').val(state);
+    $('#insert-trip-modal').modal('show');
+}
 
 $(document).ready(function() {
 	rh.eu.enableButtons();
@@ -108,6 +114,7 @@ $(document).ready(function() {
 	$('#map').usmap({
 	  // The click action
 	  click: function(event, data) {
+		rh.eu.stateOpenModal(data.name);
 	    rh.eu.filledStates.push(data.name)
 	    rh.eu.mapUpdate();
 	  }
