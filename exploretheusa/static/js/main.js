@@ -92,8 +92,6 @@ rh.eu.mapUpdate = function(){
 	$('#map').usmap({
 		click: function(event, data) {
 			rh.eu.stateOpenModal(data.name);
-		    rh.eu.filledStates.push(data.name);
-		    rh.eu.mapUpdate();
 		  },	
 		stateSpecificStyles: styles
 	});
@@ -119,11 +117,8 @@ $(document).ready(function() {
 	rh.eu.mainPageInit();
 
 	$('#map').usmap({
-	  // The click action
 	  click: function(event, data) {
 		rh.eu.stateOpenModal(data.name);
-	    rh.eu.filledStates.push(data.name);
-	    rh.eu.mapUpdate();
 	  }
 	});
 });
