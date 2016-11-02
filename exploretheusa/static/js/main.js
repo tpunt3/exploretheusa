@@ -78,8 +78,6 @@ rh.eu.triggerImageFileInput = function() {
   document.getElementById("img-input").click();
 }
 
-rh.eu.filledStates = [];
-
 rh.eu.mapUpdate = function(){
 	$('#map').remove();
 	$newMap = $('<div></div>').attr("id", "map");
@@ -101,6 +99,13 @@ rh.eu.mapUpdate = function(){
 	});
 }
 
+rh.eu.populateExistingStates = function() {
+	$("#hidden_states").children().each(function(state) {
+		rh.eu.filledStates.push($(this).val());
+	});
+	rh.eu.mapUpdate();
+}
+
 rh.eu.stateOpenModal = function(state){
 	rh.eu.resetAddTripModal();
     $('#insert-trip-modal #state-input').val(state);
@@ -108,6 +113,8 @@ rh.eu.stateOpenModal = function(state){
 }
 
 $(document).ready(function() {
+	rh.eu.filledStates = [];
+	rh.eu.populateExistingStates();
 	rh.eu.enableButtons();
 	rh.eu.mainPageInit();
 

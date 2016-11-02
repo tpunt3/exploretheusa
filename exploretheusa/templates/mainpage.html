@@ -5,9 +5,9 @@
 	</div>
 	<h1 id="welcome">Welcome {{ user_email }}! You have visited {{ num_trips }} states</h1>
 	
-	<div class="container">
+	<div id="hidden_states" class="hidden">
 	  {% for trip in state_distinct_trips %}
-	  <div>{{trip.state}}</div>
+	  <input class="state" value="{{trip.state}}"/>
 	  {% endfor %}
 	</div>
 {% endblock %}
