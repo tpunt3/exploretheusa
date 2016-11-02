@@ -115,7 +115,7 @@ $(document).ready(function() {
 	  // The click action
 	  click: function(event, data) {
 		rh.eu.stateOpenModal(data.name);
-	    rh.eu.filledStates.push(data.name)
+	    rh.eu.filledStates.push(data.name);
 	    rh.eu.mapUpdate();
 	  }
 	});
