@@ -50,7 +50,8 @@ class MainPage(BasePage):
         return "templates/mainpage.html"
     
     def update_values(self, email, values):
-        values["num_trips"] = utils.get_query_for_all_distinct_states_for_email(email)
+        values["num_trips"] = utils.get_query_for_all_distinct_states_count_for_email(email)
+        values["state_distinct_trips"] = utils.get_query_for_all_distinct_states_for_email(email) 
 
 class ViewTripPage(BasePage):
     def get_template(self):
