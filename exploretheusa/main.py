@@ -17,14 +17,12 @@
 import os
 
 from google.appengine.api import users
-from google.appengine.ext.analytics.standaloneapp import MainPage
 import jinja2
 import webapp2
 
 from handlers import blob_handler
 from handlers.base_handlers import BasePage
 from handlers.trip_handlers import InsertTripAction, DeleteTripAction
-from models import Trip
 import utils
 
 
